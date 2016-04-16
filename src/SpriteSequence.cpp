@@ -33,7 +33,9 @@ int SpriteSequence::getState()
 	return state;
 }
 //Draws the sprite to the screen
-void SpriteSequence::draw() {
+void SpriteSequence::loop()
+{
+	Sprite::loop();
 	if(_pause)initial_time=last_update;
 
 	//time based state update
@@ -44,12 +46,16 @@ void SpriteSequence::draw() {
 	if((!_repeat)&&(state>=_rows*_cols)){state=_rows*_cols-1;_pause=true;}
 	else state%=(_rows*_cols);
 
+
+
+
+}
+void SpriteSequence::draw() {
+
+	
 	int row=state/_cols;
 	int col=state%_cols;
 
-
-	
-	
 	glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

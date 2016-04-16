@@ -89,6 +89,7 @@ using namespace std;
 		ETSIDI_API SpriteSequence(GLTexture texture, int cols, int rows=1, int ms_step = 50, bool repeat = true, float x=0, float y=0, float w=-1.0F, float h=-1.0F, int initState=0);
 		ETSIDI_API ~SpriteSequence();
 		ETSIDI_API virtual void draw();
+		ETSIDI_API virtual void loop();
 		ETSIDI_API void setState(int index, bool pause=true);
 		ETSIDI_API int getState();
 		ETSIDI_API void pause(bool stop=true){_pause=stop;}
