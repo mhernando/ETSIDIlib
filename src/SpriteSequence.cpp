@@ -9,9 +9,11 @@ SpriteSequence::~SpriteSequence()
 
 //Initializes the sprite VBO. x, y, width, and height are
 //in the normalized device coordinate space. so, [-1, 1]
-SpriteSequence::SpriteSequence(GLTexture texture, int cols, int rows, int ms_step, bool repeat, 
-							   float x, float y, float w, float h, int initState):Sprite(texture,x,y,w,h)
+SpriteSequence::SpriteSequence(std::string texturePath, int cols, int rows, int ms_step, bool repeat, 
+							   float x, float y, float w, float h, int initState):Sprite(texturePath,x,y,w,h)
 {
+
+
 _cols=cols;
 _rows=rows;
 initial_time=last_update;
@@ -62,6 +64,7 @@ void SpriteSequence::draw() {
 	
 	glAlphaFunc(GL_GREATER, 0.01);
 	glEnable(GL_ALPHA_TEST);
+	if(_texture.id==0)_texture=getTexture(_texturePath);
 	glBindTexture(GL_TEXTURE_2D, _texture.id);
 	glDisable(GL_LIGHTING);
 	glColor3f(1,1,1); //de momento

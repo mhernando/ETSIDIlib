@@ -33,6 +33,7 @@ GLTexture TextureCache::getTexture(std::string texturePath) {
         GLTexture newTexture = loadPNG(texturePath);
         
         //Insert it into the map
+		if(newTexture.id>0)
         _textureMap.insert(make_pair(texturePath, newTexture));
 
         return newTexture;

@@ -64,9 +64,9 @@ int main(int argc,char* argv[])
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	
-	sprite = new Sprite(getTexture("imagenes/Bubble_Big.png"),0.05,0.05,10,10);
-	animacion = new SpriteSequence(getTexture("imagenes/butterfly.png"),7,1,100,true,2,2,5,5);
-	explosion = new SpriteSequence(getTexture("imagenes/explosion_43FR.png"),10,4,25,true,-2,2,5,5);
+	sprite = new Sprite("imagenes/Bubble_Big.png",0.05,0.05,10,10);
+	animacion = new SpriteSequence("imagenes/butterfly.png",7,1,100,true,2,2,5,5);
+	explosion = new SpriteSequence("imagenes/explosion_43FR.png",10,4,25,true,-2,2,5,5);
 
 
 	glutMainLoop();	

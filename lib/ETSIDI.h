@@ -66,7 +66,7 @@ using namespace std;
 	class Sprite
 	{
 	public:
-		ETSIDI_API Sprite(GLTexture texture, float x=0, float y=0, float width=-1, float height=-1);
+		ETSIDI_API Sprite(std::string texturePath, float x=0, float y=0, float width=-1, float height=-1);
 		ETSIDI_API ~Sprite();
 		ETSIDI_API virtual void draw();
 		ETSIDI_API virtual void loop();
@@ -92,11 +92,12 @@ using namespace std;
 		Vector2D anchor;
 		bool horizontal_flip;
 		bool vertical_flip;
+		std::string _texturePath;
 	};
 	class SpriteSequence: public Sprite
 	{
 	public:
-		ETSIDI_API SpriteSequence(GLTexture texture, int cols, int rows=1, int ms_step = 50, bool repeat = true, float x=0, float y=0, float w=-1.0F, float h=-1.0F, int initState=0);
+		ETSIDI_API SpriteSequence(std::string texturePath, int cols, int rows=1, int ms_step = 50, bool repeat = true, float x=0, float y=0, float w=-1.0F, float h=-1.0F, int initState=0);
 		ETSIDI_API ~SpriteSequence();
 		ETSIDI_API virtual void draw();
 		ETSIDI_API virtual void loop();
