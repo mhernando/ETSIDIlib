@@ -56,7 +56,7 @@ using namespace std;
 	class Sprite
 	{
 	public:
-		ETSIDI_API Sprite(std::string texturePath, float x=0, float y=0, float width=-1, float height=-1);
+		ETSIDI_API Sprite(const char *texturePath, float x=0, float y=0, float width=-1, float height=-1);
 		ETSIDI_API ~Sprite();
 		ETSIDI_API virtual void draw();
 		ETSIDI_API virtual void loop();
@@ -87,7 +87,7 @@ using namespace std;
 	class SpriteSequence: public Sprite
 	{
 	public:
-		ETSIDI_API SpriteSequence(std::string texturePath, int cols, int rows=1, int ms_step = 50, bool repeat = true, float x=0, float y=0, float w=-1.0F, float h=-1.0F, int initState=0);
+		ETSIDI_API SpriteSequence(const char *texturePath, int cols, int rows=1, int ms_step = 50, bool repeat = true, float x=0, float y=0, float w=-1.0F, float h=-1.0F, int initState=0);
 		ETSIDI_API ~SpriteSequence();
 		ETSIDI_API virtual void draw();
 		ETSIDI_API virtual void loop();
@@ -108,7 +108,7 @@ using namespace std;
 
 
 	//funciones globales publicas para texturas
-	ETSIDI_API GLTexture getTexture(string texturePath);
+	ETSIDI_API GLTexture getTexture(const char * texturePath);
 	//funciones globales publicas para numeros aleatorios
 	ETSIDI_API double lanzaDado(double max=1.0, double min=0.0F);
 	ETSIDI_API int lanzaDado(int max, int min=1);
@@ -120,8 +120,8 @@ using namespace std;
 	ETSIDI_API void setTextColor(float r, float g, float b, float alpha=1.0F);
 	ETSIDI_API void print( const char *txt, const char *fuente, int size=12); 
 	//funciones globales para reproducir sonidos
-	ETSIDI_API void play(std::string soundPath);
-	ETSIDI_API void playMusica(std::string soundPath, bool repite=false);
+	ETSIDI_API void play(const char *  soundPath);
+	ETSIDI_API void playMusica(const char *  soundPath, bool repite=false);
 	ETSIDI_API void stopMusica();
 
 	//metodos inline SPRITE 

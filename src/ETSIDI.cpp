@@ -17,10 +17,11 @@ double lanzaDado(double max, double min){return Dice::Double(max,min);}
 int lanzaDado(int max, int min){	return Dice::Int(max,min);}
 bool lanzaMoneda(){	return Dice::Bool();}
 
-GLTexture getTexture(string texturePath)
+GLTexture getTexture(const char *texturePath)
 {
+	string texPath(texturePath);
 	if(textures==0)textures=new TextureCache();
-	return textures->getTexture(texturePath);
+	return textures->getTexture(texPath);
 }
 
 long getMillis()
@@ -28,15 +29,18 @@ long getMillis()
     return GetTickCount();
 }
 
-void play(std::string soundPath)
+void play(const char * soundPath)
 {
+	string sndPath(soundPath);
 	if(player==0)player=new EasyPlayer();
-	player->playSound(soundPath);
+	player->playSound(sndPath);
 }
-void playMusica(std::string soundPath, bool repite)
+void playMusica(const char * soundPath, bool repite)
 {
+	string sndPath(soundPath);
+
 	if(player==0)player=new EasyPlayer();
-	player->playMusic(soundPath,repite);
+	player->playMusic(sndPath,repite);
 }
 void stopMusica()
 {

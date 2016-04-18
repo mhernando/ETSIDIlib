@@ -61,13 +61,13 @@ bool Sprite::collides(const Sprite &s) const
 	return false;
 
 }
-Sprite::Sprite(std::string texturePath, float x, float y,  float width, float height) {
+Sprite::Sprite(const char *texturePath, float x, float y,  float width, float height) {
 	tick();
 	
     //Set up our private vars
     pos=Vector2D(x,y);
-	_texturePath=texturePath;
-	_texture=getTexture(_texturePath);
+	_texturePath=string(texturePath);
+	_texture=getTexture(texturePath);
     
 	setSize(width,height);
 	anchor=Vector2D(width,height)*0.5;
@@ -83,7 +83,7 @@ void Sprite::draw() {
 	glAlphaFunc(GL_GREATER, 0.01);
 	glEnable(GL_ALPHA_TEST);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	if(_texture.id==0)_texture=getTexture(_texturePath);
+	if(_texture.id==0)_texture=getTexture(_texturePath.c_str());
 	glBindTexture(GL_TEXTURE_2D, _texture.id);
 	glDisable(GL_LIGHTING);
 	
