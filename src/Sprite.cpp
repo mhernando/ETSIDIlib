@@ -15,7 +15,7 @@ double Sprite::tick()
 
 Sprite::~Sprite()
 {
-	
+
 }
 
 bool checkPointIntoRec(Vector2D ori, Vector2D ux, Vector2D uy, Vector2D point)
@@ -66,7 +66,7 @@ Sprite::Sprite(const char *texturePath, float x, float y,  float width, float he
 	
     //Set up our private vars
     pos=Vector2D(x,y);
-	_texturePath=string(texturePath);
+	strncpy(_texturePath, texturePath,254);
 	_texture=getTexture(texturePath);
     
 	setSize(width,height);
@@ -83,7 +83,7 @@ void Sprite::draw() {
 	glAlphaFunc(GL_GREATER, 0.01);
 	glEnable(GL_ALPHA_TEST);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	if(_texture.id==0)_texture=getTexture(_texturePath.c_str());
+	if(_texture.id==0)_texture=getTexture(_texturePath);
 	glBindTexture(GL_TEXTURE_2D, _texture.id);
 	glDisable(GL_LIGHTING);
 	

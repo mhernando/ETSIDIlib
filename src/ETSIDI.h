@@ -57,7 +57,7 @@ using namespace std;
 	{
 	public:
 		ETSIDI_API Sprite(const char *texturePath, float x=0, float y=0, float width=-1, float height=-1);
-		ETSIDI_API ~Sprite();
+		ETSIDI_API virtual ~Sprite();
 		ETSIDI_API virtual void draw();
 		ETSIDI_API virtual void loop();
 		void setPos(float x, float y);
@@ -70,6 +70,7 @@ using namespace std;
 		void setAngle(double angle);
 		double getAngle() const; 
 		ETSIDI_API bool collides(const Sprite &s) const;
+	
 	protected:
 		ETSIDI_API double tick();
 		long int last_update;
@@ -82,7 +83,7 @@ using namespace std;
 		Vector2D anchor;
 		bool horizontal_flip;
 		bool vertical_flip;
-		std::string _texturePath;
+		char _texturePath[255];
 	};
 	class SpriteSequence: public Sprite
 	{

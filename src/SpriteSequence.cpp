@@ -64,7 +64,7 @@ void SpriteSequence::draw() {
 	
 	glAlphaFunc(GL_GREATER, 0.01);
 	glEnable(GL_ALPHA_TEST);
-	if(_texture.id==0)_texture=getTexture(_texturePath.c_str());
+	if(_texture.id==0)_texture=getTexture(_texturePath);
 	glBindTexture(GL_TEXTURE_2D, _texture.id);
 	glDisable(GL_LIGHTING);
 	glColor3f(1,1,1); //de momento
