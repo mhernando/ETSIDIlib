@@ -1,3 +1,20 @@
+/****************************************************************************
+ETSIDIlib - 2016
+
+DESCRIPTION: It is a simple wrapper of several libs and utilities, some of then 
+	written by me, but others are free of use for non-comercial purposes libraries
+	or pieces of software. Thus, for ttf, the freetype lib is being used, and for 
+	sound issues, FMod_ex lib is used. The PNG codification is decoded through 
+	lodePNG "lib" (is just a simple cpp file). I've made caches and singletons, 
+	trying to make a very, very, simple interface for my students. They are working 
+	on Visual Studio so the binaries are only included for that IDE. Anyway, it is 
+	quite easy to adapt the code to any other platform due to the use of multiplatform
+	libs. 
+
+AUTHOR: Miguel Hernando
+		Universidad Politecnica de Madrid
+****************************************************************************/
+
 #pragma once
 #include <windows.h>
 #include <GL/gl.h>              /* Header File For The OpenGL Library */
@@ -13,30 +30,47 @@
 namespace ETSIDI
 {
 using namespace std;
-	//clases publicas
+	//CLASES PUBLICAS---------------------------------------------
 	struct GLTexture {
 		GLuint id;
 		int width;
 		int height;
 	};
+	//CONSTANTES Y ENUMERACIONES----------------------------------
 	enum JUSTIFICACION_H{
 		IZQUIERDA,
 		ORIGEN,
 		DERECHA,
 		CENTRO
 	};
-
 	enum JUSTIFICACION_V{
 		INFERIOR,
 		LINEA_BASE,
 		MEDIO,
 		SUPERIOR
 	};
+//funciones globales publicas 
+	//FUNCIONES PARA LEER TEXTURAS--------------------------------
+	ETSIDI_API GLTexture getTexture(const char * texturePath);
+	//FUNCIONES PARA GENERAR NUMEROS ALEATORIOS-------------------
+	ETSIDI_API double lanzaDado(double max=1.0, double min=0.0F);
+	ETSIDI_API int lanzaDado(int max, int min=1);
+	ETSIDI_API bool lanzaMoneda();
+	//FUNCIONES PARA MEDIR EL TIEMPO------------------------------
+	ETSIDI_API long getMillis();
+	//FUNCIONES PARA IMPRIMIR UN TEXTO EN OPENGL CON FUENTES TTF--
+	ETSIDI_API void setJustificacion(JUSTIFICACION_H just=IZQUIERDA, JUSTIFICACION_V=LINEA_BASE);
+	ETSIDI_API void setTextColor(float r, float g, float b, float alpha=1.0F);
+	ETSIDI_API void print( const char *txt, const char *fuente, int size=12); 
+	//FUNCIONES PARA REPRODUCIR SONIDOS Y MUSICA------------------
+	ETSIDI_API void play(const char *  soundPath);
+	ETSIDI_API void playMusica(const char *  soundPath, bool repite=false);
+	ETSIDI_API void stopMusica();
+	//CLASES UTILES-----------------------------------------------
 	class Vector2D  {
 	public: 
 		double x;
 		double y;
-
 	public: 
 		Vector2D(double xv=0.0f,double yv=0.0f):x(xv),y(yv){} 
 		Vector2D operator - (const Vector2D v)const {return Vector2D(x-v.x,y-v.y);}   
@@ -52,6 +86,7 @@ using namespace std;
 		}         
     
 	};
+	//CLASE SPRITE------------------------------------------------------------
 	//un rectangulo con textura que facilita el dibujo y animación en pantalla
 	class Sprite
 	{
@@ -85,6 +120,8 @@ using namespace std;
 		bool vertical_flip;
 		char _texturePath[255];
 	};
+	//CLASE SPRITESEQUENCE------------------------------------------------------------
+	//un sprite con una secuencia de imagenes que hacen una animación.
 	class SpriteSequence: public Sprite
 	{
 	public:
@@ -108,22 +145,11 @@ using namespace std;
 
 
 
-	//funciones globales publicas para texturas
-	ETSIDI_API GLTexture getTexture(const char * texturePath);
-	//funciones globales publicas para numeros aleatorios
-	ETSIDI_API double lanzaDado(double max=1.0, double min=0.0F);
-	ETSIDI_API int lanzaDado(int max, int min=1);
-	ETSIDI_API bool lanzaMoneda();
-	//funciones globales publicas para medidas de tiempo
-	ETSIDI_API long getMillis();
-	//funciones globales publicas para imprimir texto
-	ETSIDI_API void setJustificacion(JUSTIFICACION_H just=IZQUIERDA, JUSTIFICACION_V=LINEA_BASE);
-	ETSIDI_API void setTextColor(float r, float g, float b, float alpha=1.0F);
-	ETSIDI_API void print( const char *txt, const char *fuente, int size=12); 
-	//funciones globales para reproducir sonidos
-	ETSIDI_API void play(const char *  soundPath);
-	ETSIDI_API void playMusica(const char *  soundPath, bool repite=false);
-	ETSIDI_API void stopMusica();
+
+
+
+	//-----------------------------------------------------------------------------------------------
+
 
 	//metodos inline SPRITE 
 	inline void Sprite::setAngle(double angle){
