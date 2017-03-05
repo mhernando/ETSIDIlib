@@ -61,7 +61,17 @@ adicionales:
 
 Y por último en el Vinculador, agregar lib a los directorios de bibliotecas
 adicionales:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Atención: Es posible que al realizar las operaciones descritas y utilizar glut.h
+nos aparezca el siguiente error:
+"error C2381: 'exit' : redefinition; __declspec(noreturn) differs"
+Para solucionarlo se nos propone incluir la librería stdlib.h de manera previa a
+glut.h para sobreescribir la funcionalidad de exit() (que es lo que en el fondo
+está causando tantos problemas):
 
+#include <stdlib.h>
+#include "glut.h"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Con esto ya tenemos el marco minimo para funcionar. En cualquier lugar bastará
 con
 
