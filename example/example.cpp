@@ -1,4 +1,9 @@
-#include "glut.h"
+
+#if defined(_M_X64) || defined(__amd64__)
+#    include "freeglut.h"
+#else
+#    include "glut.h"
+#endif
 #include <math.h>
 #include "ETSIDI.h"
 
