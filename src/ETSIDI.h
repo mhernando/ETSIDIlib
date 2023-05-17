@@ -64,7 +64,7 @@ using namespace std;
 	ETSIDI_API void setTextColor(float r, float g, float b, float alpha=1.0F);
 	ETSIDI_API void setFont(const char *fuente, int size=12);
 	ETSIDI_API void print( const char *txt, const char *fuente=0, int size=12); 
-	ETSIDI_API void printxy(const char *txt, int x, int y, int z=0);
+	ETSIDI_API void printxy(const char* txt, double x, double y, double z=0);
 	//FUNCIONES PARA REPRODUCIR SONIDOS Y MUSICA------------------
 	ETSIDI_API void play(const char *  soundPath);
 	ETSIDI_API void playMusica(const char *  soundPath, bool repite=false);

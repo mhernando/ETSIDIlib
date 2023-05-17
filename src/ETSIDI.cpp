@@ -48,13 +48,13 @@ void stopMusica()
 	if(player==0)player=new EasyPlayer();
 	player->stopMusic();
 }
-void printxy(const char *txt, int x, int y, int z)
+void printxy(const char *txt, double x, double y, double z)
 {
 	if(defaultFont==0)return;
 	glPushMatrix();
 	glDisable (GL_LIGHTING);
 	glDisable(GL_DEPTH_TEST);
-	glTranslated(x,y,0);
+	glTranslated(x,y,z);
 	ETSIDI::print(txt);
 	glEnable(GL_DEPTH_TEST);
 	glEnable (GL_LIGHTING);
